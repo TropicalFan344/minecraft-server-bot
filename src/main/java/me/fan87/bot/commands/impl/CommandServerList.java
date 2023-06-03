@@ -30,6 +30,6 @@ public class CommandServerList extends ServerCommand {
                 .setColor(new Color(0xff4747))
                 .setTitle("Server List")
                 .build();
-        event.getHook().editOriginalEmbeds(message);
+        event.getHook().editOriginalEmbeds(message).queue();
     }
 }

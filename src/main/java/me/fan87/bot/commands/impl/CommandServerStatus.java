@@ -19,9 +19,9 @@ public class CommandServerStatus extends ServerCommand {
         String name = event.getOption("name").getAsString();
         Server server = ServerManager.getServerByName("name");
         if (server.isAlive()) {
-            event.getHook().editOriginalEmbeds(SimpleEmbedGenerator.generateSuccessfulEmbed("伺服氣穩定運行中~~"));
+            event.getHook().editOriginalEmbeds(SimpleEmbedGenerator.generateSuccessfulEmbed("伺服氣穩定運行中~~")).queue();
         }else {
-            event.getHook().editOriginalEmbeds(SimpleEmbedGenerator.generateWarningEmbed("伺服器沒開喔!"));
+            event.getHook().editOriginalEmbeds(SimpleEmbedGenerator.generateWarningEmbed("伺服器沒開喔!")).queue();
         }
     }
 }
