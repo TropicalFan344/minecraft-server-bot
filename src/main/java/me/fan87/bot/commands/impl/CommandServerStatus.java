@@ -17,7 +17,7 @@ public class CommandServerStatus extends ServerCommand {
     public void onExecute(SlashCommandInteractionEvent event) {
         event.deferReply().queue();
         String name = event.getOption("name").getAsString();
-        Server server = ServerManager.getServerByName("name");
+        Server server = ServerManager.getServerByName(name);
         if (server.isAlive()) {
             event.getHook().editOriginalEmbeds(SimpleEmbedGenerator.generateSuccessfulEmbed("伺服氣穩定運行中~~")).queue();
         }else {

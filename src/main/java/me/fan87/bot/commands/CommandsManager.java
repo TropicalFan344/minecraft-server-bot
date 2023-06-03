@@ -71,12 +71,7 @@ public class CommandsManager {
                             } catch (Throwable throwable) {
                                 if (throwable instanceof CommandException) {
                                     try {
-
                                         event.getHook().editOriginalEmbeds(
-                                                SimpleEmbedGenerator.generateErrorEmbed(throwable.getMessage())
-                                        ).queue();
-
-                                        event.getInteraction().replyEmbeds(
                                                 SimpleEmbedGenerator.generateErrorEmbed(throwable.getMessage())
                                         ).queue();
                                     } catch (Throwable e) {
@@ -84,11 +79,6 @@ public class CommandsManager {
                                     }
                                 } else {
                                     throwable.printStackTrace();
-                                    event.getHook().editOriginalEmbeds(
-                                            // TODO: Error report system
-                                            SimpleEmbedGenerator.generateErrorEmbed("Something went wrong while handling the command! Error: " + throwable.getMessage())
-                                    ).queue();
-
                                     event.getHook().editOriginalEmbeds(
                                             // TODO: Error report system
                                             SimpleEmbedGenerator.generateErrorEmbed("Something went wrong while handling the command! Error: " + throwable.getMessage())

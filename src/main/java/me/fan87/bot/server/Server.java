@@ -37,6 +37,9 @@ public class Server {
                 throw new RuntimeException(e);
             }
         }).start();
+        Runtime.getRuntime().addShutdownHook(new Thread(() -> {
+            this.inputCommand("stop");
+        }));
         Thread thread = new Thread(() -> {
             Scanner scanner = new Scanner(serverUri + "log\\latest.log");
             while(process.isAlive()) {
@@ -47,9 +50,6 @@ public class Server {
         });
         thread.start();
         ServerManager.getServers().put(name, this);
-        Runtime.getRuntime().addShutdownHook(new Thread(() -> {
-            process.destroyForcibly();
-        }));
     }
 
     public void inputCommand(String command) {

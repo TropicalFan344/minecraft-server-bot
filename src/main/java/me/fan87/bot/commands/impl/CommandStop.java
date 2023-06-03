@@ -19,6 +19,7 @@ public class CommandStop extends ServerCommand {
         String name = event.getOption("name").getAsString();
         Server server = ServerManager.getServerByName(name);
         server.inputCommand("stop");
+        ServerManager.getServers().remove(name);
         event.getHook().editOriginalEmbeds(SimpleEmbedGenerator.generateSuccessfulEmbed("伺服器關閉成功!")).queue();
     }
 }

@@ -27,7 +27,7 @@ public class CommandServerList extends ServerCommand {
         }
         MessageEmbed message = new EmbedBuilder()
                 .setDescription(output)
-                .setColor(new Color(0xff4747))
+                .setColor(new Color(0x5DFF51))
                 .setTitle("Server List")
                 .build();
         event.getHook().editOriginalEmbeds(message).queue();
