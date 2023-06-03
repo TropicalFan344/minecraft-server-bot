@@ -37,6 +37,6 @@ public class CommandLaunch extends ServerCommand {
         String memoryAllocate = event.getOption("allocate").getAsString();
         String name = event.getOption("name").getAsString();
         Server server = new Server(name, memoryAllocate, config.getConfig().serverUri);
-        event.getHook().editOriginalEmbeds(SimpleEmbedGenerator.generateSuccessfulEmbed("伺服器成功啟動!")).queue();
+        event.getHook().editOriginalEmbeds(SimpleEmbedGenerator.generateSuccessfulEmbed("伺服器成功啟動!名稱: " + name)).queue();
     }
 }

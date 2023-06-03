@@ -37,6 +37,15 @@ public class Server {
                 throw new RuntimeException(e);
             }
         }).start();
+        Thread thread = new Thread(() -> {
+            Scanner scanner = new Scanner(serverUri + "log\\latest.log");
+            while(process.isAlive()) {
+                while (scanner.hasNext()) {
+                    this.log += scanner.nextLine();
+                }
+            }
+        });
+        thread.start();
         ServerManager.getServers().put(name, this);
         Runtime.getRuntime().addShutdownHook(new Thread(() -> {
             process.destroyForcibly();
@@ -56,15 +65,10 @@ public class Server {
 
     @SneakyThrows
     public String getLog() {
-        Thread thread = new Thread(() -> {
-            Scanner scanner = new Scanner(serverUri + "log\\latest.log");
-            while(process.isAlive()) {
-                while (scanner.hasNext()) {
-                    this.log += scanner.nextLine();
-                }
-            }
-        });
-        thread.start();
         return this.log;
+    }
+
+    public boolean isAlive() {
+        return process.isAlive();
     }
 }

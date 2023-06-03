@@ -2,6 +2,7 @@ package me.fan87.bot.server;
 
 import lombok.Getter;
 import lombok.SneakyThrows;
+import me.fan87.bot.commands.CommandException;
 import me.fan87.bot.config.ConfigManager;
 
 import java.io.File;
@@ -16,6 +17,9 @@ public class ServerManager {
 
     @SneakyThrows
     public static Server getServerByName(String name) {
+        if (servers.get(name) == null) {
+            throw new CommandException("No server found by name you entered!");
+        }
         return servers.get(name);
     }
 
