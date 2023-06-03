@@ -10,7 +10,7 @@ import net.dv8tion.jda.api.interactions.commands.build.OptionData;
 
 public class CommandStop extends ServerCommand {
     public CommandStop() {
-        super("stop", "關閉伺服器", new OptionData(OptionType.STRING, "name", "伺服器名稱", true).addChoice());
+        super("stop", "關閉伺服器", new OptionData(OptionType.STRING, "name", "伺服器名稱", true));
     }
 
     @Override
