@@ -40,15 +40,6 @@ public class Server {
         Runtime.getRuntime().addShutdownHook(new Thread(() -> {
             this.inputCommand("stop");
         }));
-        Thread thread = new Thread(() -> {
-            Scanner scanner = new Scanner(serverUri + "log\\latest.log");
-            while(process.isAlive()) {
-                while (scanner.hasNext()) {
-                    this.log += scanner.nextLine();
-                }
-            }
-        });
-        thread.start();
         ServerManager.getServers().put(name, this);
     }
 
@@ -65,6 +56,10 @@ public class Server {
 
     @SneakyThrows
     public String getLog() {
+        Scanner scanner = new Scanner(serverUri + "log\\latest.log");
+        while (scanner.hasNext()) {
+            this.log += scanner.nextLine();
+        }
         return this.log;
     }
 
